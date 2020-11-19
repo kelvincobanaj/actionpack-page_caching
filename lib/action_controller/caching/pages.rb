@@ -299,7 +299,7 @@ module ActionController
       end
 
       def caching_allowed?
-        (request.get? || request.head?) && response.status == 200
+        (request.get? || request.head?) && request.query_parameters.empty? && response.status == 200
       end
 
       def perform_caching?
